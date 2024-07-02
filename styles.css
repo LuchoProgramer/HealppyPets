@@ -1,0 +1,48 @@
+:root {
+    --color-primary: #D9C5C9;
+    --color-secondary: #F2CED8;
+    --color-accent: #F2C4D5;
+    --color-dark: #0A0A0D;
+    --color-light: #F2F2F0;
+}
+
+body {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+.navbar {
+    background-color: var(--color-dark);
+}
+
+.nav-link {
+    color: var(--color-light);
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-dark);
+}
+
+.card {
+    background-color: var(--color-light);
+    border: 1px solid var(--color-primary);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+footer {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
