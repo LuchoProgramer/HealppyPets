@@ -1,48 +1,67 @@
-:root {
-    --color-primary: #D9C5C9;
-    --color-secondary: #F2CED8;
-    --color-accent: #F2C4D5;
-    --color-dark: #0A0A0D;
-    --color-light: #F2F2F0;
-}
-
 body {
-    background-color: var(--color-light);
-    color: var(--color-dark);
+    font-family: 'Arial', sans-serif;
 }
 
-.navbar {
-    background-color: var(--color-dark);
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.nav-link {
-    color: var(--color-light);
+.carousel-item {
+    height: 400px;
+    background-color: #ddc3c3;
+}
+.carousel-item {
+    height: 100%; /* Establece la altura deseada para el carrusel */
+    position: relative; /* Asegura que los elementos hijos se posicionen correctamente */
 }
 
-.nav-link:hover {
-    color: var(--color-accent);
+.carousel-item img {
+    height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
+    width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
+    object-fit: cover; /* Hace que la imagen se ajuste dentro del contenedor manteniendo sus proporciones */
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--color-dark);
+.carousel-caption {
+    position: absolute; /* Asegura que el texto de la leyenda se superponga a la imagen */
+    top: 50%; /* Centra verticalmente el texto de la leyenda */
+    left: 50%; /* Centra horizontalmente el texto de la leyenda */
+    transform: translate(-50%, -50%); /* Ajusta la posición para centrar el texto */
+    background-color: rgba(0, 0, 0, 0.5); /* Agrega un fondo semitransparente al texto de la leyenda */
+    padding: 1rem; /* Agrega un poco de relleno alrededor del texto */
+    border-radius: 0.5rem; /* Redondea las esquinas del fondo del texto */
+}
+.carousel-caption-left {
+    position: absolute; /* Asegura que la leyenda se posicione absolutamente dentro del contenedor */
+    top: 50%; /* La posiciona verticalmente al centro */
+    left: 10%; /* La posiciona a la izquierda de la pantalla */
+    transform: translateY(-50%);
+    width: 35%; /* Limita el ancho del texto al 35% del contenedor principal */
+    padding: 2.5rem; /* Agrega relleno alrededor del texto */
+    border-radius: 0.5rem; /* Redondea las esquinas del fondo del texto */
+    text-align: center;
+}
+.carousel-caption-left h2 {
+    font-size: 2rem; /* Tamaño de la letra */
+    line-height: 1.2; /* Interlineado */
+    font-weight: bold;
+}
+section {
+    padding: 50px 0;
 }
 
-.card {
-    background-color: var(--color-light);
-    border: 1px solid var(--color-primary);
+#servicios .card {
+    border: none;
+    transition: transform 0.3s;
 }
 
-.btn-primary {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-.btn-primary:hover {
-    background-color: var(--color-secondary);
-    border-color: var(--color-secondary);
+#servicios .card:hover {
+    transform: scale(1.05);
 }
 
 footer {
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
 }
