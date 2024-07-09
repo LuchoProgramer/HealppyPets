@@ -1,3 +1,10 @@
+:root {
+    --color-primary: #D9C5C9;
+    --color-secondary: #F2CED8;
+    --color-accent: #F2C4D5;
+    --color-dark: #0A0A0D;
+    --color-light: #F2F2F0;
+}
 body {
     font-family: 'Arial', sans-serif;
 }
