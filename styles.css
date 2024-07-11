@@ -72,3 +72,23 @@ footer {
     padding: 20px 0;
     text-align: center;
 }
+.col-md-6 {
+    max-width: 400px; /* Ajusta este valor según tu preferencia */
+    margin: 0 auto; /* Centrar horizontalmente el contenido */
+}
+
+.img-fluid {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen al ancho del contenedor */
+    height: auto; /* Mantiene la proporción de aspecto */
+}
+.navbar-custom {
+    background-color: #F2CED8 !important; /* !important asegura que este estilo sobrescriba las reglas de Bootstrap */
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: #F2F2F0; /* Cambia el color del texto de los enlaces */
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #D9C5C9; /* Cambia el color del texto de los enlaces al pasar el mouse */
+}
