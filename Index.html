@@ -182,46 +182,136 @@
                     </div>
                 </div>
         
-                <!-- Sección de Quiz -->
-                <div>
-                    <h3 class="text-center mb-4">Quiz</h3>
-                    <div class="row">
-                        <!-- Tarjeta de Quiz 1 -->
-                        <div class="col-md-6">
-                            <div class="card">
-                                <img src="ruta/a/imagen-quiz-1.jpg" class="card-img-top" alt="Título del Quiz 1">
-                                <div class="card-body">
-                                    <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
-                                    <p class="card-text">Descripción breve del quiz 1.</p>
-                                    <!-- Botón para abrir Modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quizModal2">
-                                        Participar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Tarjeta de Quiz 2 -->
-                        <div class="col-md-6">
-                            <div class="card">
-                                <img src="ruta/a/imagen-quiz-2.jpg" class="card-img-top" alt="Título del Quiz 2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Título del Quiz 2</h5>
-                                    <p class="card-text">Descripción breve del quiz 2.</p>
-                                    <!-- Botón para abrir Modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quizModal2">
-                                        Participar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-4">
-                    <a href="/Quizz/Index-quizz.html" class="btn btn-secondary">Ver todos los Quiz</a>
+    <!-- Quiz Content -->
+<!-- Main Content -->
+<main class="container my-5">
+    <h1 class="text-center mb-4">Quizzes</h1>
+    <div class="row">
+        <!-- Quiz Card 1 -->
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card">
+                <img src="ruta/a/imagen-quiz-1.jpg" class="card-img-top" alt="¿Qué tipo de dueño de mascota eres?">
+                <div class="card-body">
+                    <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
+                    <p class="card-text">Averigua qué tipo de dueño de mascota eres y qué tipo de mascota se adaptaría mejor a tu estilo de crianza.</p>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quizModal">
+                        Tomar Quiz
+                    </button>
                 </div>
             </div>
-        </section>
-        <section id="contacto" class="py-5">
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quizModalLabel">¿Qué tipo de dueño de mascota eres?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="quizForm">
+                        <!-- Question 1 -->
+                        <div class="mb-3">
+                            <label for="question1" class="form-label">1. ¿Con qué frecuencia llevas a tu mascota al veterinario?</label>
+                            <div>
+                                <input type="radio" id="q1a1" name="question1" value="1">
+                                <label for="q1a1">Una vez al año</label><br>
+                                <input type="radio" id="q1a2" name="question1" value="2">
+                                <label for="q1a2">Cada seis meses</label><br>
+                                <input type="radio" id="q1a3" name="question1" value="3">
+                                <label for="q1a3">Cada tres meses</label><br>
+                                <input type="radio" id="q1a4" name="question1" value="4">
+                                <label for="q1a4">Solo cuando está enfermo</label>
+                            </div>
+                        </div>
+                        <!-- Question 2 -->
+                        <div class="mb-3">
+                            <label for="question2" class="form-label">2. ¿Qué tipo de alimento le das a tu mascota?</label>
+                            <div>
+                                <input type="radio" id="q2a1" name="question2" value="1">
+                                <label for="q2a1">Alimento seco</label><br>
+                                <input type="radio" id="q2a2" name="question2" value="2">
+                                <label for="q2a2">Alimento húmedo</label><br>
+                                <input type="radio" id="q2a3" name="question2" value="3">
+                                <label for="q2a3">Comida casera</label><br>
+                                <input type="radio" id="q2a4" name="question2" value="4">
+                                <label for="q2a4">Una mezcla de todo</label>
+                            </div>
+                        </div>
+                        <!-- Question 3 -->
+                        <div class="mb-3">
+                            <label for="question3" class="form-label">3. ¿Cuánto tiempo al día dedicas a jugar con tu mascota?</label>
+                            <div>
+                                <input type="radio" id="q3a1" name="question3" value="1">
+                                <label for="q3a1">Menos de 30 minutos</label><br>
+                                <input type="radio" id="q3a2" name="question3" value="2">
+                                <label for="q3a2">30 minutos a 1 hora</label><br>
+                                <input type="radio" id="q3a3" name="question3" value="3">
+                                <label for="q3a3">1 a 2 horas</label><br>
+                                <input type="radio" id="q3a4" name="question3" value="4">
+                                <label for="q3a4">Más de 2 horas</label>
+                            </div>
+                        </div>
+                        <!-- Question 4 -->
+                        <div class="mb-3">
+                            <label for="question4" class="form-label">4. ¿Cuántos juguetes tiene tu mascota?</label>
+                            <div>
+                                <input type="radio" id="q4a1" name="question4" value="1">
+                                <label for="q4a1">Ninguno</label><br>
+                                <input type="radio" id="q4a2" name="question4" value="2">
+                                <label for="q4a2">1 a 3</label><br>
+                                <input type="radio" id="q4a3" name="question4" value="3">
+                                <label for="q4a3">4 a 6</label><br>
+                                <input type="radio" id="q4a4" name="question4" value="4">
+                                <label for="q4a4">Más de 6</label>
+                            </div>
+                        </div>
+                        <!-- Question 5 -->
+                        <div class="mb-3">
+                            <label for="question5" class="form-label">5. ¿Dónde duerme tu mascota?</label>
+                            <div>
+                                <input type="radio" id="q5a1" name="question5" value="1">
+                                <label for="q5a1">En su propia cama</label><br>
+                                <input type="radio" id="q5a2" name="question5" value="2">
+                                <label for="q5a2">En mi cama</label><br>
+                                <input type="radio" id="q5a3" name="question5" value="3">
+                                <label for="q5a3">En un lugar designado fuera de la casa</label><br>
+                                <input type="radio" id="q5a4" name="question5" value="4">
+                                <label for="q5a4">Donde quiera</label>
+                            </div>
+                        </div>    
+                        <button type="button" class="btn btn-primary" onclick="calculateResult()">Ver resultado</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Resultado del Quiz</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="result"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center mt-4">
+    <a href="/Quizz/Index-quizz.html" class="btn btn-secondary">Ver todos los Quiz</a>
+</div>
+</main>
+<div class="container">
+    <div class="row">
+        <section id="contacto" class="py-5 col-md-6">
             <div class="container">
                 <h2 class="text-center mb-4">Contacto</h2>
                 <form>
@@ -241,7 +331,7 @@
                 </form>
             </div>
         </section>
-        <section id="agendar-cita" class="py-5 bg-light">
+        <section id="agendar-cita" class="py-5 bg-light col-md-6">
             <div class="container">
                 <h2 class="text-center mb-4">Agendar Cita</h2>
                 <form>
@@ -261,6 +351,8 @@
                 </form>
             </div>
         </section>
+    </div>
+</div>
     </main>
 
     <!-- Footer -->
