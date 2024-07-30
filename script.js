@@ -101,3 +101,13 @@ document.addEventListener('DOMContentLoaded', function () {
         sendAppointmentToWhatsApp();
     });
 });
+
+// Mostrar u ocultar el botón de regreso al principio en función del desplazamiento
+window.addEventListener('scroll', function() {
+    const backToTop = document.getElementById('backToTop');
+    if (window.scrollY > 300) { // Mostrar el botón si se desplaza más de 300 píxeles hacia abajo
+        backToTop.style.display = 'block';
+    } else {
+        backToTop.style.display = 'none';
+    }
+});
