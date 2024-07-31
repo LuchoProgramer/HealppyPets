@@ -56,7 +56,9 @@ body {
 section {
     padding: 50px 0;
 }
-
+.bg-custom-pink {
+    background-color: rgba(242, 196, 213, 0.25); /* Color rosa con 50% de transparencia */
+}
 #servicios .card {
     border: none;
     transition: transform 0.3s;
@@ -117,4 +119,12 @@ footer {
 
 #backToTop:hover {
     background-color: #ff02c8; /* Cambia el color del fondo al pasar el ratón por encima */
+}
+.carousel-inner {
+    border-radius: 15px; /* Ajusta el valor según tus necesidades */
+    overflow: hidden; /* Asegura que las imágenes no sobresalgan del contenedor con border-radius */
+}
+
+.carousel-inner img {
+    border-radius: 15px; /* Aplica el borde redondeado a las imágenes */
 }
