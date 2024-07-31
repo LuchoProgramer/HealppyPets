@@ -88,11 +88,11 @@ footer {
 }
 
 .navbar-custom .navbar-nav .nav-link {
-    color: #F2F2F0; /* Cambia el color del texto de los enlaces */
+    color: #000000 !important; /* Cambia el color del texto de los enlaces y asegura prioridad */
 }
 
 .navbar-custom .navbar-nav .nav-link:hover {
-    color: #D9C5C9; /* Cambia el color del texto de los enlaces al pasar el mouse */
+    color: #e2b7c0 !important; /* Cambia el color del texto de los enlaces al pasar el mouse y asegura prioridad */
 }
 
 /* Estilo para el botón de regreso al principio */
@@ -127,4 +127,15 @@ footer {
 
 .carousel-inner img {
     border-radius: 15px; /* Aplica el borde redondeado a las imágenes */
+}
+
+.card {
+    max-width: 300px; /* Ajusta el tamaño máximo según tus necesidades */
+    margin: auto; /* Centra la tarjeta en su columna */
+}
+.card-img-top1 {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área asignada */
+    max-height: 190px; /* Ajusta la altura máxima según tus necesidades */
 }
