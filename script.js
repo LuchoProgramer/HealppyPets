@@ -42,71 +42,35 @@ function calculateResult() {
     resultModal.show();
 }
 
-// Función para enviar el formulario de contacto a EmailJS mediante Netlify Functions
-// Función para enviar el formulario de contacto a EmailJS mediante Netlify Functions
-async function sendContactForm(event) {
-    event.preventDefault(); // Evita el envío del formulario tradicional
-
-    const form = document.getElementById('contactForm');
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-
-    try {
-        const response = await fetch('./netlify/functions/procesar_formulario', { // Asegúrate de que la ruta es correcta
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        alert(result.message);
-        form.reset();
-    } catch (error) {
-        console.error('Error al enviar el formulario:', error);
-        alert('Hubo un error al enviar el formulario.');
-    }
-}
-
-// Función para enviar el formulario de agendar cita a WhatsApp
-function sendAppointmentToWhatsApp(event) {
-    event.preventDefault(); // Evita el envío del formulario tradicional
-
-    const form = document.getElementById('appointmentForm');
+function prepareWhatsAppMessage() {
     const nombreMascota = document.getElementById('nombre-mascota').value.trim();
     const fecha = document.getElementById('fecha').value.trim();
     const hora = document.getElementById('hora').value.trim();
 
-    // Validar que los campos no estén vacíos
     if (!nombreMascota || !fecha || !hora) {
         alert('Por favor, completa todos los campos.');
-        return;
+        return false;
     }
 
-    const whatsappNumber = '593987125458';  // Número de WhatsApp en formato internacional
     const message = `Nombre de la Mascota: ${encodeURIComponent(nombreMascota)}%0AFecha: ${encodeURIComponent(fecha)}%0AHora: ${encodeURIComponent(hora)}`;
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-    
+    const whatsappUrl = `https://wa.me/593987125458?text=${message}`;
+
     window.location.href = whatsappUrl;
+    return false; // Previene el envío del formulario tradicional
 }
 
-// Asegúrate de agregar los manejadores de eventos después de que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-    const contactForm = document.getElementById('contactForm');
     const appointmentForm = document.getElementById('appointmentForm');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', sendContactForm);
-    }
-
     if (appointmentForm) {
-        appointmentForm.addEventListener('submit', sendAppointmentToWhatsApp);
+        // Asegúrate de que el nombre del manejador de eventos sea el correcto
+        appointmentForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Previene el envío del formulario
+            prepareWhatsAppMessage(); // Llama a la función para preparar y enviar el mensaje
+        });
     }
 });
+
 
 
 // Mostrar u ocultar el botón de regreso al principio en función del desplazamiento
