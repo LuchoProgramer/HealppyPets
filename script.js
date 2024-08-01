@@ -44,7 +44,6 @@ function calculateResult() {
 
 // Función para enviar el formulario de contacto a EmailJS mediante Netlify Functions
 async function sendContactForm(event) {
-    event.preventDefault(); // Evita el envío del formulario tradicional
 
     const form = document.getElementById('contactForm');
     const formData = new FormData(form);
