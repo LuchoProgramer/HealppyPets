@@ -29,7 +29,7 @@ exports.handler = async (event) => {
 
                 return {
                     statusCode: 200,
-                    body: JSON.stringify({ message: 'Formulario enviado correctamente.' }),
+                    body: JSON.stringify({ message: 'Formulario de contacto enviado correctamente.' }),
                 };
             } else {
                 return {
@@ -38,10 +38,10 @@ exports.handler = async (event) => {
                 };
             }
         } catch (error) {
-            console.error('Error al enviar el correo:', error);
+            console.error('Error al procesar el formulario:', error);
             return {
                 statusCode: 500,
-                body: JSON.stringify({ message: 'Error al enviar el correo.' }),
+                body: JSON.stringify({ message: 'Error al procesar el formulario.' }),
             };
         }
     }

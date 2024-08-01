@@ -328,7 +328,7 @@
                     <div class="col-md-6">
                         <div class="container">
                             <h3 class="text-center mb-4">Contacto</h3>
-                            <form id="contactForm" action="/.netlify/functions/procesar_formulario" method="POST">
+                            <form id="contactForm" action="./netlify/functions/procesar_formulario" method="POST">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -356,20 +356,20 @@
                     <div class="col-md-6">
                         <div class="container">
                             <h3 class="text-center mb-4">Agendar Cita</h3>
-                            <form id="appointmentForm">
+                            <form id="appointmentForm" action="https://wa.me/593987125458" method="GET">
                                 <div class="mb-3">
                                     <label for="nombre-mascota" class="form-label">Nombre de la Mascota</label>
-                                    <input type="text" class="form-control" id="nombre-mascota" required>
+                                    <input type="text" class="form-control" id="nombre-mascota" name="nombre-mascota" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="fecha" class="form-label">Fecha</label>
-                                    <input type="date" class="form-control" id="fecha" required>
+                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="hora" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" id="hora" required>
+                                    <input type="time" class="form-control" id="hora" name="hora" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Agendar</button>
+                                <button type="submit" class="btn btn-primary" onclick="return prepareWhatsAppMessage()">Agendar</button>
                             </form>
                         </div>
                     </div>
