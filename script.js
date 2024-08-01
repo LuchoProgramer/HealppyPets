@@ -1,3 +1,4 @@
+// Función para calcular el resultado del quiz
 function calculateResult() {
     const form = document.getElementById('quizForm');
     const formData = new FormData(form);
@@ -41,37 +42,39 @@ function calculateResult() {
     resultModal.show();
 }
 
+// Función para enviar el formulario de contacto a EmailJS mediante Netlify Functions
+async function sendContactForm(event) {
+    event.preventDefault(); // Evita el envío del formulario tradicional
 
-// Función para enviar el formulario de agendar cita a WhatsApp
-function sendAppointmentToWhatsApp() {
-    const nombreMascota = document.getElementById('nombre-mascota').value.trim();
-    const fecha = document.getElementById('fecha').value.trim();
-    const hora = document.getElementById('hora').value.trim();
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
 
-    // Validar que los campos no estén vacíos
-    if (!nombreMascota || !fecha || !hora) {
-        alert('Por favor, completa todos los campos.');
-        return;
+    try {
+        const response = await fetch('./netlify/functions/procesar_formulario.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        alert(result.message);
+        form.reset();
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+        alert('Hubo un error al enviar el formulario.');
     }
-
-    const whatsappNumber = '593987125458';  // Número de WhatsApp en formato internacional
-    const message = `Nombre de la Mascota: ${encodeURIComponent(nombreMascota)}%0AFecha: ${encodeURIComponent(fecha)}%0AHora: ${encodeURIComponent(hora)}`;
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-    
-    window.location.href = whatsappUrl;
 }
 
 // Asegúrate de agregar los manejadores de eventos después de que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('contactForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita el envío del formulario tradicional
-        sendContactToWhatsApp();
-    });
-
-    document.getElementById('appointmentForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita el envío del formulario tradicional
-        sendAppointmentToWhatsApp();
-    });
+    document.getElementById('contactForm').addEventListener('submit', sendContactForm);
+    document.getElementById('appointmentForm').addEventListener('submit', sendAppointmentToWhatsApp);
 });
 
 // Mostrar u ocultar el botón de regreso al principio en función del desplazamiento
