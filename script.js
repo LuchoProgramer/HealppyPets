@@ -43,7 +43,9 @@ function calculateResult() {
 }
 
 // Función para enviar el formulario de contacto a EmailJS mediante Netlify Functions
+// Función para enviar el formulario de contacto a EmailJS mediante Netlify Functions
 async function sendContactForm(event) {
+    event.preventDefault(); // Evita el envío del formulario tradicional
 
     const form = document.getElementById('contactForm');
     const formData = new FormData(form);
@@ -53,7 +55,7 @@ async function sendContactForm(event) {
     });
 
     try {
-        const response = await fetch('./netlify/functions/procesar_formulario.js', {
+        const response = await fetch('./netlify/functions/procesar_formulario', { // Asegúrate de que la ruta es correcta
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -74,6 +76,7 @@ async function sendContactForm(event) {
 function sendAppointmentToWhatsApp(event) {
     event.preventDefault(); // Evita el envío del formulario tradicional
 
+    const form = document.getElementById('appointmentForm');
     const nombreMascota = document.getElementById('nombre-mascota').value.trim();
     const fecha = document.getElementById('fecha').value.trim();
     const hora = document.getElementById('hora').value.trim();
@@ -93,9 +96,18 @@ function sendAppointmentToWhatsApp(event) {
 
 // Asegúrate de agregar los manejadores de eventos después de que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('contactForm').addEventListener('submit', sendContactForm);
-    document.getElementById('appointmentForm').addEventListener('submit', sendAppointmentToWhatsApp);
+    const contactForm = document.getElementById('contactForm');
+    const appointmentForm = document.getElementById('appointmentForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', sendContactForm);
+    }
+
+    if (appointmentForm) {
+        appointmentForm.addEventListener('submit', sendAppointmentToWhatsApp);
+    }
 });
+
 
 // Mostrar u ocultar el botón de regreso al principio en función del desplazamiento
 window.addEventListener('scroll', function() {
