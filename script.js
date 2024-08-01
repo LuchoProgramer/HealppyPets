@@ -71,6 +71,27 @@ async function sendContactForm(event) {
     }
 }
 
+// Función para enviar el formulario de agendar cita a WhatsApp
+function sendAppointmentToWhatsApp(event) {
+    event.preventDefault(); // Evita el envío del formulario tradicional
+
+    const nombreMascota = document.getElementById('nombre-mascota').value.trim();
+    const fecha = document.getElementById('fecha').value.trim();
+    const hora = document.getElementById('hora').value.trim();
+
+    // Validar que los campos no estén vacíos
+    if (!nombreMascota || !fecha || !hora) {
+        alert('Por favor, completa todos los campos.');
+        return;
+    }
+
+    const whatsappNumber = '593987125458';  // Número de WhatsApp en formato internacional
+    const message = `Nombre de la Mascota: ${encodeURIComponent(nombreMascota)}%0AFecha: ${encodeURIComponent(fecha)}%0AHora: ${encodeURIComponent(hora)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    
+    window.location.href = whatsappUrl;
+}
+
 // Asegúrate de agregar los manejadores de eventos después de que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('contactForm').addEventListener('submit', sendContactForm);
