@@ -1,3 +1,6 @@
+const fetch = require('node-fetch');
+const emailjs = require('emailjs-com');
+
 exports.handler = async (event) => {
     if (event.httpMethod === 'POST') {
         try {
@@ -5,16 +8,25 @@ exports.handler = async (event) => {
             const formData = JSON.parse(event.body);
             const recaptchaToken = formData['g-recaptcha-response'];
 
-            // Configura la clave secreta y la URL de reCAPTCHA
+            // Verificar el reCAPTCHA
             const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
             const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`;
-
-            // Verifica el token con Google reCAPTCHA
             const response = await fetch(recaptchaUrl, { method: 'POST' });
             const data = await response.json();
 
             if (data.success) {
-                // Aquí puedes manejar el formulario, como guardar datos o enviar correos
+                // Enviar correo usando EmailJS
+                const emailResponse = await emailjs.send(
+                    process.env.your_service_id, // Usa el Service ID de EmailJS
+                    process.env.your_template_id, // Usa el Template ID de EmailJS
+                    {
+                        from_name: formData['nombre'],
+                        from_email: formData['email'],
+                        message: formData['mensaje']
+                    },
+                    process.env.EMAILJS_API_KEY // Usa la API Key pública de EmailJS
+                );
+
                 return {
                     statusCode: 200,
                     body: JSON.stringify({ message: 'Formulario enviado correctamente.' }),
@@ -26,10 +38,10 @@ exports.handler = async (event) => {
                 };
             }
         } catch (error) {
-            console.error('Error al verificar el reCAPTCHA:', error);
+            console.error('Error al enviar el correo:', error);
             return {
                 statusCode: 500,
-                body: JSON.stringify({ message: 'Error al verificar el reCAPTCHA.' }),
+                body: JSON.stringify({ message: 'Error al enviar el correo.' }),
             };
         }
     }

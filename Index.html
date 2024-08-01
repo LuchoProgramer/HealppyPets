@@ -328,7 +328,7 @@
                     <div class="col-md-6">
                         <div class="container">
                             <h3 class="text-center mb-4">Contacto</h3>
-                            <form id="contactForm" action="/netlify/functions/procesar_formulario.js" method="POST">
+                            <form id="contactForm" action="/.netlify/functions/procesar_formulario" method="POST">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -347,6 +347,10 @@
                             </form>
                         </div>
                     </div>
+
+                    
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    
                     
                     <!-- Formulario de Agendar Cita -->
                     <div class="col-md-6">

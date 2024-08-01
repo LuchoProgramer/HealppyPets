@@ -42,34 +42,6 @@ function calculateResult() {
 }
 
 
-// script.js
-
-// Función para enviar el formulario de contacto a WhatsApp
-function sendContactToWhatsApp() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
-
-    // Validar que los campos no estén vacíos
-    if (!nombre || !email || !mensaje) {
-        alert('Por favor, completa todos los campos.');
-        return;
-    }
-
-    // Validar formato de email
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert('Por favor, ingresa una dirección de correo electrónico válida.');
-        return;
-    }
-
-    const whatsappNumber = '593987125458'; // Número de WhatsApp en formato internacional
-    const message = `Nombre: ${encodeURIComponent(nombre)}%0AEmail: ${encodeURIComponent(email)}%0AMensaje: ${encodeURIComponent(mensaje)}`;
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-    
-    window.location.href = whatsappUrl;
-}
-
 // Función para enviar el formulario de agendar cita a WhatsApp
 function sendAppointmentToWhatsApp() {
     const nombreMascota = document.getElementById('nombre-mascota').value.trim();
