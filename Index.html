@@ -325,38 +325,71 @@
                 <h2 class="text-center mb-4">Contacto y Agendar Cita</h2>
                 <div class="row">
                     <!-- Formulario de Contacto -->
-                    <div class="col-md-6">
-                        <div class="container">
-                            <h3 class="text-center mb-4">Contacto</h3>
-                            <form id="contactForm" action="./netlify/functions/procesar_formulario" method="POST">
-                                <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="mensaje" class="form-label">Mensaje</label>
-                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
-                                </div>
-                                <!-- Widget de reCAPTCHA -->
-                                <div class="g-recaptcha mb-3" data-sitekey="6LeVuhwqAAAAABUqyPBLrR6kzaf1DqOg2PB_MOj8"></div>
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                            </form>
-                        </div>
-                    </div>
+<!-- Formulario de Contacto -->
+<div class="col-md-6">
+    <div class="container">
+        <h3 class="text-center mb-4">Contacto</h3>
+        <form id="contactForm" action="./netlify/functions/procesar_formulario" method="POST">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
+            </div>
+            <!-- Widget de reCAPTCHA -->
+            <div class="g-recaptcha mb-3" data-sitekey="6LeVuhwqAAAAABUqyPBLrR6kzaf1DqOg2PB_MOj8"></div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+</div>
 
-                    
-                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                    
-                    
-                    <!-- Formulario de Agendar Cita -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const data = {
+            nombre: formData.get('nombre'),
+            email: formData.get('email'),
+            mensaje: formData.get('mensaje'),
+            'g-recaptcha-response': grecaptcha.getResponse() // Obtén el valor del reCAPTCHA
+        };
+
+        try {
+            const response = await fetch('./netlify/functions/procesar_formulario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert('Formulario de contacto enviado correctamente.');
+                event.target.reset(); // Limpia el formulario
+            } else {
+                alert('Error al enviar el formulario de contacto.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al enviar el formulario de contacto.');
+        }
+    });
+</script>
+
+        
+                    <!-- Botón de Agendar Cita -->
                     <div class="col-md-6">
                         <div class="container">
                             <h3 class="text-center mb-4">Agendar Cita</h3>
-                            <form id="appointmentForm" action="https://wa.me/593987125458" method="GET">
+                            <form id="appointmentForm">
                                 <div class="mb-3">
                                     <label for="nombre-mascota" class="form-label">Nombre de la Mascota</label>
                                     <input type="text" class="form-control" id="nombre-mascota" name="nombre-mascota" required>
@@ -369,7 +402,7 @@
                                     <label for="hora" class="form-label">Hora</label>
                                     <input type="time" class="form-control" id="hora" name="hora" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary" onclick="return prepareWhatsAppMessage()">Agendar</button>
+                                <button type="button" class="btn btn-primary" onclick="prepareWhatsAppMessage()">Agendar</button>
                             </form>
                         </div>
                     </div>
