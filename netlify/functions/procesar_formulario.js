@@ -1,10 +1,9 @@
-const fetch = require('node-fetch');
-const emailjs = require('emailjs-com');
+import fetch from 'node-fetch'; // Importa `fetch` solo si es necesario, para Node.js 20 es nativo.
+import { send } from 'emailjs-com';
 
-exports.handler = async (event) => {
+export async function handler(event) {
     if (event.httpMethod === 'POST') {
         try {
-            // Obtén los datos del formulario
             const formData = JSON.parse(event.body);
             const recaptchaToken = formData['g-recaptcha-response'];
 
@@ -16,15 +15,15 @@ exports.handler = async (event) => {
 
             if (data.success) {
                 // Enviar correo usando EmailJS
-                const emailResponse = await emailjs.send(
-                    process.env.your_service_id, // Usa el Service ID de EmailJS
-                    process.env.your_template_id, // Usa el Template ID de EmailJS
+                const emailResponse = await send(
+                    process.env.EMAILJS_SERVICE_ID,
+                    process.env.EMAILJS_TEMPLATE_ID,
                     {
                         from_name: formData['nombre'],
                         from_email: formData['email'],
                         message: formData['mensaje']
                     },
-                    process.env.EMAILJS_API_KEY // Usa la API Key pública de EmailJS
+                    process.env.EMAILJS_API_KEY
                 );
 
                 return {
@@ -50,4 +49,4 @@ exports.handler = async (event) => {
         statusCode: 405,
         body: JSON.stringify({ message: 'Método no permitido.' }),
     };
-};
+}
