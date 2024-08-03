@@ -1,3 +1,6 @@
+[build]
+  functions = "netlify/functions"
+  
 [functions]
   # Define la carpeta donde están tus funciones
   directory = "netlify/functions"
