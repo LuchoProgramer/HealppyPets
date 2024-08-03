@@ -331,7 +331,7 @@
 <div class="col-md-6">
     <div class="container">
         <h3 class="text-center mb-4">Contacto</h3>
-        <form id="contactForm" action="./netlify/functions/procesar_formulario" method="POST">
+        <form id="contactForm" action="/.netlify/functions/procesar_formulario" method="POST">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -351,9 +351,11 @@
     </div>
 </div>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <script>
     // Inicializa EmailJS con tu usuario
-    emailjs.init("YOUR_USER_ID");
+    emailjs.init("jgAwVR-flCTKQnK_X");
   
     document.getElementById("contactForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
@@ -371,7 +373,7 @@
         }
   
         // Enviar el formulario a la función de Netlify
-        fetch("./netlify/functions/procesar_formulario", {
+        fetch("/.netlify/functions/procesar_formulario", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -395,7 +397,7 @@
             alert("Hubo un problema al enviar el formulario. Inténtalo de nuevo.");
         });
     });
-  </script>
+</script>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
