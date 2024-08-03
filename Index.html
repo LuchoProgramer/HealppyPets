@@ -349,6 +349,52 @@
     </div>
 </div>
 
+<script>
+    // Inicializa EmailJS con tu usuario
+    emailjs.init("YOUR_USER_ID");
+  
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+  
+        // Obtén los datos del formulario
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Obtén el token de reCAPTCHA
+        const recaptchaToken = grecaptcha.getResponse();
+  
+        if (!recaptchaToken) {
+            alert("Por favor, completa el reCAPTCHA.");
+            return;
+        }
+  
+        // Enviar el formulario a la función de Netlify
+        fetch("./netlify/functions/procesar_formulario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                ...data,
+                'g-recaptcha-response': recaptchaToken
+            }),
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.message === 'Formulario de contacto enviado correctamente.') {
+                alert("Formulario enviado exitosamente.");
+                event.target.reset(); // Resetea el formulario
+            } else {
+                alert("Hubo un problema al enviar el formulario. Inténtalo de nuevo.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Hubo un problema al enviar el formulario. Inténtalo de nuevo.");
+        });
+    });
+  </script>
+
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     document.getElementById('contactForm').addEventListener('submit', async function (event) {
@@ -455,8 +501,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    <script src="/netlify/functions/procesar_formulario.js"></script>
-
 
 </body>
 </html>

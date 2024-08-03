@@ -1,35 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Manejar el formulario de contacto
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function (event) {
-            event.preventDefault(); // Previene el envío del formulario
-
-            const formData = new FormData(contactForm);
-            const data = {
-                nombre: formData.get('nombre'),
-                email: formData.get('email'),
-                mensaje: formData.get('mensaje'),
-                'g-recaptcha-response': formData.get('g-recaptcha-response')
-            };
-
-            try {
-                const response = await fetch('./netlify/functions/procesar_formulario', {
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    alert('Formulario de contacto enviado correctamente.');
-                } else {
-                    alert('Error al enviar el formulario de contacto.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al enviar el formulario de contacto.');
-            }
-        });
-    }
 
     // Manejar el botón de agendar cita
     const appointmentForm = document.getElementById('appointmentForm');
