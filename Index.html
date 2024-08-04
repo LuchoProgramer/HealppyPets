@@ -10,8 +10,6 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="icon" href="/Favicon.png" type="image/png">
     <link rel="shortcut icon" href="/Favicon.png" type="image/png">
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="path/to/your/script.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -327,112 +325,88 @@
                 <h2 class="text-center mb-4">Contacto y Agendar Cita</h2>
                 <div class="row">
                     <!-- Formulario de Contacto -->
-<!-- Formulario de Contacto -->
-<div class="col-md-6">
-    <div class="container">
-        <h3 class="text-center mb-4">Contacto</h3>
-        <form id="contactForm" action="/netlify/functions/procesar_formulario" method="POST">
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="mensaje" class="form-label">Mensaje</label>
-                <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
-            </div>
-            <!-- Widget de reCAPTCHA -->
-            <div class="g-recaptcha mb-3" data-sitekey="6LeVuhwqAAAAABUqyPBLrR6kzaf1DqOg2PB_MOj8"></div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-    </div>
-</div>
+                    <!-- Formulario de Contacto -->
+                    <div class="col-md-6">
+                        <div class="container mt-5">
+                            <h1 class="mb-4">Formulario de Contacto</h1>
+                            <form id="contact-form" class="needs-validation" novalidate>
+                                <div class="form-group">
+                                    <label for="name">Nombre:</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, introduce tu nombre.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, introduce un email válido.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Mensaje:</label>
+                                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor, introduce tu mensaje.
+                                    </div>
+                                </div>
+                                <!-- Widget de reCAPTCHA -->
+                                <div class="g-recaptcha mb-3" data-sitekey="6LeVuhwqAAAAABUqyPBLrR6kzaf1DqOg2PB_MOj8"></div>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script>
+                        // Inicializar EmailJS con tu User ID
+                        emailjs.init("jgAwVR-flCTKQnK_X");
 
-<script>
-    // Inicializa EmailJS con tu usuario
-    emailjs.init("jgAwVR-flCTKQnK_X");
-  
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
-  
-        // Obtén los datos del formulario
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Obtén el token de reCAPTCHA
-        const recaptchaToken = grecaptcha.getResponse();
-  
-        if (!recaptchaToken) {
-            alert("Por favor, completa el reCAPTCHA.");
-            return;
-        }
-  
-        // Enviar el formulario a la función de Netlify
-        fetch("/.netlify/functions/procesar_formulario", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                ...data,
-                'g-recaptcha-response': recaptchaToken
-            }),
-        })
-        .then(response => response.json())
-        .then(result => {
-            if (result.message === 'Formulario de contacto enviado correctamente.') {
-                alert("Formulario enviado exitosamente.");
-                event.target.reset(); // Resetea el formulario
-            } else {
-                alert("Hubo un problema al enviar el formulario. Inténtalo de nuevo.");
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Hubo un problema al enviar el formulario. Inténtalo de nuevo.");
-        });
-    });
-</script>
+                        // Seleccionar el formulario y añadir el escuchador de eventos
+                        const form = document.getElementById('contact-form');
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', async function (event) {
-        event.preventDefault();
+                        form.addEventListener('submit', function(event) {
+                            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+                            event.stopPropagation(); // Prevenir que el evento se propague
 
-        const formData = new FormData(event.target);
-        const data = {
-            nombre: formData.get('nombre'),
-            email: formData.get('email'),
-            mensaje: formData.get('mensaje'),
-            'g-recaptcha-response': grecaptcha.getResponse() // Obtén el valor del reCAPTCHA
-        };
+                            // Validar el formulario
+                            if (form.checkValidity() === false) {
+                                form.classList.add('was-validated');
+                                return;
+                            }
 
-        try {
-            const response = await fetch('./netlify/functions/procesar_formulario', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+                            // Verificar reCAPTCHA
+                            const recaptchaResponse = grecaptcha.getResponse();
+                            if (!recaptchaResponse) {
+                                alert('Por favor, verifica el reCAPTCHA.');
+                                return;
+                            }
 
-            if (response.ok) {
-                alert('Formulario de contacto enviado correctamente.');
-                event.target.reset(); // Limpia el formulario
-            } else {
-                alert('Error al enviar el formulario de contacto.');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error al enviar el formulario de contacto.');
-        }
-    });
-</script>
+                            // Obtener los valores del formulario
+                            const name = document.getElementById('name').value;
+                            const email = document.getElementById('email').value;
+                            const message = document.getElementById('message').value;
+
+                            // Enviar el formulario usando EmailJS
+                            emailjs.send("service_066w7i9", "template_q7peraq", {
+                                from_name: name,
+                                from_email: email,
+                                message: message,
+                                'g-recaptcha-response': recaptchaResponse
+                            })
+                            .then(function(response) {
+                                console.log('SUCCESS!', response.status, response.text);
+                                alert('¡El mensaje ha sido enviado correctamente!');
+                                form.reset(); // Reiniciar el formulario
+                                form.classList.remove('was-validated'); // Remover la clase de validación
+                                grecaptcha.reset(); // Reiniciar reCAPTCHA
+                            }, function(error) {
+                                console.error('FAILED...', error);
+                                alert('Hubo un problema al enviar el mensaje.');
+                            });
+                        });
+                    </script>
 
         
                     <!-- Botón de Agendar Cita -->
@@ -505,6 +479,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script src="/netlify/functions/procesar_formulario.js"></script>
+
 
 </body>
 </html>
