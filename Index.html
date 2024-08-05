@@ -10,6 +10,9 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="icon" href="/Favicon.png" type="image/png">
     <link rel="shortcut icon" href="/Favicon.png" type="image/png">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 </head>
 <body>
     <!-- Header -->
@@ -356,57 +359,45 @@
                             </form>
                         </div>
                     </div>
-                    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+                    <script type="text/javascript">
+                        (function(){
+                           emailjs.init("jgAwVR-flCTKQnK_X");
+                        })();
+                     </script>
                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                    <script>
-                        // Inicializar EmailJS con tu User ID
-                        emailjs.init("jgAwVR-flCTKQnK_X");
-
-                        // Seleccionar el formulario y añadir el escuchador de eventos
-                        const form = document.getElementById('contact-form');
-
-                        form.addEventListener('submit', function(event) {
-                            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-                            event.stopPropagation(); // Prevenir que el evento se propague
-
-                            // Validar el formulario
-                            if (form.checkValidity() === false) {
-                                form.classList.add('was-validated');
-                                return;
-                            }
-
-                            // Verificar reCAPTCHA
-                            const recaptchaResponse = grecaptcha.getResponse();
-                            if (!recaptchaResponse) {
-                                alert('Por favor, verifica el reCAPTCHA.');
-                                return;
-                            }
-
-                            // Obtener los valores del formulario
-                            const name = document.getElementById('name').value;
-                            const email = document.getElementById('email').value;
-                            const message = document.getElementById('message').value;
-
-                            // Enviar el formulario usando EmailJS
-                            emailjs.send("service_066w7i9", "template_q7peraq", {
-                                from_name: name,
-                                from_email: email,
-                                message: message,
-                                'g-recaptcha-response': recaptchaResponse
-                            })
-                            .then(function(response) {
-                                console.log('SUCCESS!', response.status, response.text);
-                                alert('¡El mensaje ha sido enviado correctamente!');
-                                form.reset(); // Reiniciar el formulario
-                                form.classList.remove('was-validated'); // Remover la clase de validación
-                                grecaptcha.reset(); // Reiniciar reCAPTCHA
-                            }, function(error) {
-                                console.error('FAILED...', error);
-                                alert('Hubo un problema al enviar el mensaje.');
-                            });
+                    <script type="text/javascript">
+                        document.getElementById('contact-form').addEventListener('submit', function(event) {
+                           event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+                           event.stopPropagation(); // Prevenir que el evento se propague
+                     
+                           // Validar el formulario
+                           const form = event.target;
+                           if (form.checkValidity() === false) {
+                              form.classList.add('was-validated');
+                              return;
+                           }
+                     
+                           // Verificar reCAPTCHA
+                           const recaptchaResponse = grecaptcha.getResponse();
+                           if (!recaptchaResponse) {
+                              alert('Por favor, verifica el reCAPTCHA.');
+                              return;
+                           }
+                     
+                           // Enviar el formulario usando EmailJS
+                           emailjs.sendForm('service_066w7i9', 'template_q7peraq', form, 'jgAwVR-flCTKQnK_X')
+                              .then(function(response) {
+                                 console.log('SUCCESS!', response.status, response.text);
+                                 alert('¡El mensaje ha sido enviado correctamente!');
+                                 form.reset(); // Reiniciar el formulario
+                                 form.classList.remove('was-validated'); // Remover la clase de validación
+                                 grecaptcha.reset(); // Reiniciar reCAPTCHA
+                              }, function(error) {
+                                 console.error('FAILED...', error);
+                                 alert('Hubo un problema al enviar el mensaje.');
+                              });
                         });
-                    </script>
-
+                     </script>                     
         
                     <!-- Botón de Agendar Cita -->
                     <div class="col-md-6">
