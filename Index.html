@@ -38,13 +38,18 @@
                             <a class="nav-link text-white" href="#recursos">Recursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#contacto">Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#agendar-cita">Agendar Cita</a>
+                            <a class="nav-link text-white" href="#contacto-y-agendar">Contacto</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/Blog/Index-Blog.html">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/Quizz/Index-quizz.html">Entretenimiento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#agendar-cita">
+                                <i class="fas fa-calendar-check me-2"></i>Agendar Cita
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -328,7 +333,7 @@
                 <h2 class="text-center mb-4">Contacto y Agendar Cita</h2>
                 <div class="row">
                     <!-- Formulario de Contacto -->
-                    <div class="col-md-6">
+                    <div class="col-md-6 justify-content-center">
                         <div class="container mt-5">
                             <h3 class="mb-4">Formulario de Contacto</h3>
                             <form id="contact-form" class="needs-validation" novalidate>
@@ -355,7 +360,9 @@
                                 </div>
                                 <!-- Widget de reCAPTCHA -->
                                 <div class="g-recaptcha mb-3" data-sitekey="6LeVuhwqAAAAABUqyPBLrR6kzaf1DqOg2PB_MOj8"></div>
-                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <div class="text-center"> <!-- Añadido text-center para centrar el botón -->
+                                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -400,7 +407,7 @@
                      </script>                     
         
                     <!-- Botón de Agendar Cita -->
-                    <div class="col-md-6 mt-5">
+                    <div class="col-md-6 mt-5" id="agendar-cita">
                         <div class="container">
                             <h3 class="text-center mb-4">Agendar Cita</h3>
                             <form id="appointmentForm">
@@ -416,7 +423,9 @@
                                     <label for="hora" class="form-label">Hora</label>
                                     <input type="time" class="form-control" id="hora" name="hora" required>
                                 </div>
-                                <button type="button" class="btn btn-primary" onclick="prepareWhatsAppMessage()">Agendar</button>
+                                <div class="text-center"> <!-- Añadido text-center para centrar el botón -->
+                                    <button type="button" class="btn btn-primary" onclick="prepareWhatsAppMessage()">Agendar por WhatsApp</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -429,13 +438,14 @@
                 <div class="row">
                     <!-- Logo y redes sociales -->
                     <div class="col-md-4">
-                        <img src="./Imagenes/Logo_Veterinaria_healppypets.png" alt="Logo HealppyPets" class="mb-2 logo" style="width: 150px; border-radius: 50%;">
+                        <img src="../Imagenes/Logo_Veterinaria_healppypets.png" alt="Logo HealppyPets" class="mb-2 logo" style="width: 150px; border-radius: 50%;">
                         <div>
-                            <a href="https://www.facebook.com/profile.php?id=100093894950283&mibextid=ZbWKwL" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.tiktok.com/@healppy.pets?_t=8oi5rDO8oBp&_r=1" class="text-white me-2"><i class="fab fa-tiktok"></i></a>
-                            <a href="https://www.instagram.com/healppy_pets?utm_source=qr&igsh=OHhsZjVhczc3cW9n" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100093894950283&mibextid=ZbWKwL" class="text-white me-2" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.tiktok.com/@healppy.pets?_t=8oi5rDO8oBp&_r=1" class="text-white me-2" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.instagram.com/healppy_pets?utm_source=qr&igsh=OHhsZjVhczc3cW9n" class="text-white me-2" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
+                    
 
                     <!-- Páginas legales -->
                     <div class="col-md-4">
