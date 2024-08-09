@@ -8,6 +8,7 @@
     <link rel="icon" href="/Favicon.png" type="image/png">
     <link rel="shortcut icon" href="/Favicon.png" type="image/png">
     <style>
+        /* Estilos básicos para el quiz */
         .quiz-container {
             max-width: 600px;
             margin: 0 auto;
@@ -17,13 +18,27 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .quiz-card {
-            transition: transform 0.2s;
+            transition: transform 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateX(100%);
+            position: absolute;
+            width: 100%;
         }
-        .quiz-card:hover {
-            transform: scale(1.05);
+        .quiz-card.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .quiz-card.previous {
+            opacity: 0;
+            transform: translateX(-100%);
         }
         .quiz-option {
             cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
             transition: background-color 0.2s;
         }
         .quiz-option:hover {
@@ -36,81 +51,89 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-            <div class="container">
-                <a class="navbar-brand" href="/Index.html">HealppyPets</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Index.html#inicio">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Index.html#servicios">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Index.html#nosotros">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Index.html#recursos">Recursos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Index.html#contacto">Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Index.html#agendar-cita">Agendar Cita</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Quiz Content -->
-    <main class="container my-5">
-        <div class="quiz-container">
-            <h1 class="text-center mb-4">¿Qué tipo de dueño de mascota eres?</h1>
-            <div id="quiz" class="quiz-card">
-                <!-- Questions will be injected here by JavaScript -->
-            </div>
-            <div id="result" class="result-container">
-                <h2>¡Eres un dueño de mascota maravilloso!</h2>
-                <p id="result-text">...</p>
-                <a href="/quizzes.html" class="btn btn-primary mt-4">Tomar otro quiz</a>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>© 2024 HealppyPets. Todos los derechos reservados.</p>
-    </footer>
+    <div id="quiz" class="quiz-container">
+        <!-- Las tarjetas de preguntas se agregarán aquí dinámicamente -->
+    </div>
+    <div id="result" class="result-container">
+        <h3>Resultado</h3>
+        <p id="result-text"></p>
+    </div>
 
     <script>
-        const quizData = [
+        // Datos del quiz
+        const quizData = {
+            "title": "¿Qué tipo de dueño de mascota eres?",
+            "questions": [
+                {
+                    "question": "¿Cómo describes tu rutina diaria?",
+                    "options": [
+                        { "text": "Activa y llena de energía", "value": 1 },
+                        { "text": "Tranquila y relajada", "value": 2 },
+                        { "text": "Cargada de compromisos", "value": 3 },
+                        { "text": "Flexible y espontánea", "value": 4 }
+                    ]
+                },
+                {
+                    "question": "¿Cuánto tiempo puedes dedicarle a tu mascota diariamente?",
+                    "options": [
+                        { "text": "Más de 3 horas", "value": 1 },
+                        { "text": "Entre 1 y 3 horas", "value": 2 },
+                        { "text": "Menos de 1 hora", "value": 3 },
+                        { "text": "Solo fines de semana", "value": 4 }
+                    ]
+                },
+                {
+                    "question": "¿Qué tan importante es para ti la compañía de una mascota?",
+                    "options": [
+                        { "text": "Muy importante, busco una conexión profunda", "value": 1 },
+                        { "text": "Importante, pero no siempre la prioridad", "value": 2 },
+                        { "text": "Algo agradable, pero no esencial", "value": 3 },
+                        { "text": "No es una prioridad", "value": 4 }
+                    ]
+                },
+                {
+                    "question": "¿Cómo prefieres socializar con tu mascota?",
+                    "options": [
+                        { "text": "Hacer actividades y juegos juntos", "value": 1 },
+                        { "text": "Tener momentos de calma y tranquilidad", "value": 2 },
+                        { "text": "Solo interactuar cuando sea necesario", "value": 3 },
+                        { "text": "Dejar que sea independiente y sólo supervisar", "value": 4 }
+                    ]
+                },
+                {
+                    "question": "¿Dónde duerme tu mascota?",
+                    "options": [
+                        { "text": "En su propia cama", "value": 1 },
+                        { "text": "En mi cama", "value": 2 },
+                        { "text": "En un lugar designado fuera de la casa", "value": 3 },
+                        { "text": "Donde quiera", "value": 4 }
+                    ]
+                }
+            ]
+        };
+
+        // Datos de personalidades
+        const personalities = [
             {
-                question: "¿Qué haces en tu tiempo libre?",
-                options: [
-                    { text: "Relajarte en casa", value: "a" },
-                    { text: "Salir a explorar", value: "b" },
-                    { text: "Jugar con amigos", value: "c" },
-                    { text: "Dormir", value: "d" }
-                ]
+                "type": "El Entusiasta",
+                "range": [4, 7],
+                "description": "Valoras la conexión profunda y dedicas mucho tiempo a tu mascota. Te encanta interactuar y hacer actividades juntos."
             },
             {
-                question: "¿Cómo reaccionas ante nuevas personas?",
-                options: [
-                    { text: "Soy tímido y reservado", value: "a" },
-                    { text: "Me emociono y soy muy sociable", value: "b" },
-                    { text: "Soy curioso pero cauteloso", value: "c" },
-                    { text: "Soy amistoso y me adapto fácilmente", value: "d" }
-                ]
+                "type": "El Balanceado",
+                "range": [8, 11],
+                "description": "Eres una persona equilibrada que busca una buena conexión con su mascota, pero también mantiene un equilibrio con tus otras responsabilidades."
             },
-            // Add more questions as needed
+            {
+                "type": "Práctico y Moderado",
+                "range": [12, 15],
+                "description": "Prefieres mantener cierta independencia tanto para ti como para tu mascota. Interactúas con tu mascota cuando es necesario, pero no es tu prioridad principal."
+            },
+            {
+                "type": "Independiente y Espontáneo",
+                "range": [16, 20],
+                "description": "Eres flexible y permisivo, permitiendo a tu mascota tener libertad y priorizas tus propias rutinas y preferencias."
+            }
         ];
 
         const quizContainer = document.getElementById("quiz");
@@ -119,39 +142,54 @@
         let currentQuestionIndex = 0;
         let answers = [];
 
-        function loadQuestion() {
-            if (currentQuestionIndex >= quizData.length) {
-                showResult();
-                return;
-            }
-            const currentQuestion = quizData[currentQuestionIndex];
-            quizContainer.innerHTML = `
-                <div class="mb-3">
-                    <h5>${currentQuestion.question}</h5>
-                </div>
-                ${currentQuestion.options.map((option, index) => `
-                    <div class="quiz-option p-3 mb-2" onclick="selectOption('${option.value}')">
-                        ${option.text}
+        function loadQuestions() {
+            quizData.questions.forEach((question, index) => {
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                if (index === 0) card.classList.add('active'); // Show the first card initially
+
+                card.innerHTML = `
+                    <div class="mb-3">
+                        <h5>${question.question}</h5>
                     </div>
-                `).join('')}
-            `;
+                    ${question.options.map((option) => `
+                        <div class="quiz-option" onclick="selectOption(${option.value}, ${index})">
+                            ${option.text}
+                        </div>
+                    `).join('')}
+                `;
+
+                quizContainer.appendChild(card);
+            });
         }
 
-        function selectOption(value) {
+        function selectOption(value, index) {
             answers.push(value);
-            currentQuestionIndex++;
-            loadQuestion();
+
+            const cards = document.querySelectorAll('.quiz-card');
+            cards[index].classList.remove('active');
+            if (index < cards.length - 1) {
+                cards[index + 1].classList.add('active');
+            } else {
+                showResult();
+            }
         }
 
         function showResult() {
+            const score = answers.reduce((sum, val) => sum + val, 0);
+            const personality = personalities.find(p => score >= p.range[0] && score <= p.range[1]);
+
             quizContainer.style.display = "none";
             resultContainer.style.display = "block";
-            // Process results
-            let resultMessage = "Basado en tus respuestas, eres un dueño de mascota increíblemente dedicado y amoroso.";
-            resultText.innerText = resultMessage;
+
+            if (personality) {
+                resultText.innerText = `Eres un ${personality.type}. ${personality.description}`;
+            } else {
+                resultText.innerText = "No se pudo determinar tu tipo de personalidad.";
+            }
         }
 
-        loadQuestion();
+        loadQuestions();
     </script>
 </body>
 </html>

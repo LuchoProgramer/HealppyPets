@@ -1,0 +1,92 @@
+/* Variables de color */
+:root {
+    --color-primary: #D9C5C9;
+    --color-secondary: #F2CED8;
+    --color-accent: #F2C4D5;
+    --color-dark: #0A0A0D;
+    --color-light: #F2F2F0;
+}
+
+/* Estilo para el encabezado del modal */
+.modal-header {
+    background-color: var(--color-primary); /* Usamos el color principal de la marca */
+    color: var(--color-dark); /* Contraste con el color oscuro */
+    border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+/* Estilo para el título del modal */
+.modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Estilo para el cuerpo del modal */
+.modal-body {
+    background-color: var(--color-light); /* Fondo claro para el cuerpo del modal */
+    padding: 30px; /* Espaciado interno */
+    font-size: 1.1rem; /* Tamaño de fuente */
+}
+
+/* Estilo para los botones */
+.modal-footer .btn-primary {
+    background-color: var(--color-secondary); /* Color secundario para el botón principal */
+    border: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: var(--color-dark); /* Texto oscuro */
+}
+
+.modal-footer .btn-secondary {
+    background-color: var(--color-accent); /* Color de acento para el botón secundario */
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: var(--color-dark); /* Texto oscuro */
+}
+
+/* Estilo para el contenedor de resultados */
+.result-container {
+    background-color: var(--color-secondary); /* Fondo con el color secundario */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result-container h3 {
+    font-weight: bold;
+    color: var(--color-dark); /* Texto oscuro */
+    margin-bottom: 15px;
+}
+
+.result-container p {
+    color: var(--color-dark); /* Texto oscuro */
+    font-size: 1rem;
+}
+
+.option-btn {
+    cursor: pointer;
+    background-color: var(--color-light); /* Fondo claro para cada opción */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.option-btn:hover {
+    background-color: var(--color-accent); /* Cambio de color al pasar el mouse */
+    color: var(--color-dark); /* Texto oscuro en hover */
+}
+
+.list-group-item {
+    border: none; /* Sin bordes para un aspecto más limpio */
+    padding: 15px; /* Espaciado interno para hacer los botones más grandes */
+    margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}

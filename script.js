@@ -31,7 +31,7 @@ function prepareWhatsAppMessage() {
     }
 
     const message = `Nombre de la Mascota: ${encodeURIComponent(nombreMascota)}%0AFecha: ${encodeURIComponent(fecha)}%0AHora: ${encodeURIComponent(hora)}`;
-    const whatsappUrl = `https://wa.me/593987125458?text=${message}`;
+    const whatsappUrl = `https://wa.me/593987005084?text=${message}`;
 
     window.location.href = whatsappUrl;
     return false; // Previene el envío del formulario tradicional

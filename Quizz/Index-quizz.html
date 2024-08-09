@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizzes - HealppyPets</title>
+    <title>HealppyPets - Quizz</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../Quizz/quizz.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="icon" href="/Favicon.png" type="image/png">
     <link rel="shortcut icon" href="/Favicon.png" type="image/png">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
 </head>
 <body>
     <style>
@@ -29,7 +34,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
             <div class="container">
-                <a class="navbar-brand" href="/Index.html">HealppyPets</a>
+                <a class="navbar-brand" href="../Index.html">HealppyPets</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -61,91 +66,103 @@
             </div>
         </nav>
     </header>
-    </style>
-
     <!-- Quiz Content -->
     <main class="container my-5">
         <h1 class="text-center mb-4">Quizzes</h1>
-        <div class="row">
-            <!-- Example Quiz Card -->
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <img src="ruta/a/imagen-quiz-1.jpg" class="card-img-top" alt="¿Qué tipo de mascota eres?">
-                    <div class="card-body">
-                        <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
-                        <p class="card-text">Averigua qué tipo de dueño de mascota eres y qué tipo de mascota se adaptaría mejor a tu estilo de crianza.</p>
-                        <a href="/Quizz/Que-tipo-de-dueño-de-mascota-eres.html" class="btn btn-primary">Tomar Quiz</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Repeat for other quiz cards -->
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <img src="ruta/a/imagen-quiz-2.jpg" class="card-img-top" alt="¿Qué raza de perro se adapta más a tu estilo de vida?">
-                    <div class="card-body">
-                        <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
-                        <p class="card-text">Descubre qué raza de perro sería la mejor compañía para ti según tu estilo de vida y personalidad.</p>
-                        <a href="/Quizzes/que-raza-de-perro-se-adapta-a-tu-estilo-de-vida.html" class="btn btn-primary">Tomar Quiz</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Add more quiz cards as needed -->
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+        <!-- Tarjetas de quizzes -->
         <div class="container">
             <div class="row">
-                <!-- Logo y redes sociales -->
-                <div class="col-md-3">
-                    <img src="/ruta/a/logo.png" alt="Logo HealppyPets" class="mb-2" style="width: 150px;">
-                    <div>
-                        <a href="https://facebook.com" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="https://instagram.com" class="text-white"><i class="fab fa-instagram"></i></a>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <img src="../Imagenes/Quizz_Que_clase_de_dueño_de_mascota_eres.webp" class="card-img-top img-fluid" alt="¿Qué tipo de dueño de mascota eres?" style="max-height: 300px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
+                            <p class="card-text">Averigua qué tipo de dueño de mascota eres y qué tipo de mascota se adaptaría mejor a tu estilo de crianza.</p>
+                            <button class="btn btn-primary" onclick="openQuiz('Data/que-tipo-de-dueno-de-mascota-eres.json')">Tomar Quiz</button>
+                        </div>
                     </div>
                 </div>
-    
-                <!-- Menú principal -->
-                <div class="col-md-3">
-                    <h5>Menú Principal</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/Index.html#inicio" class="text-white">Inicio</a></li>
-                        <li><a href="/Index.html#servicios" class="text-white">Servicios</a></li>
-                        <li><a href="/Index.html#nosotros" class="text-white">Nosotros</a></li>
-                        <li><a href="/Index.html#recursos" class="text-white">Recursos</a></li>
-                        <li><a href="/Index.html#contacto" class="text-white">Contacto</a></li>
-                        <li><a href="/Index.html#agendar-cita" class="text-white">Agendar Cita</a></li>
-                        <li><a href="/Blog/Index-Blog.html" class="text-white">Blog</a></li>
-                    </ul>
+                <!-- Agregar más tarjetas de quizzes aquí -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <img src="../Imagenes/Quizz_Que_clase_de_dueño_de_mascota_eres.webp" class="card-img-top img-fluid" alt="¿Qué tipo de dueño de mascota eres?" style="max-height: 300px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
+                            <p class="card-text">Averigua qué tipo de dueño de mascota eres y qué tipo de mascota se adaptaría mejor a tu estilo de crianza.</p>
+                            <button class="btn btn-primary" onclick="openQuiz('Data/cuestionario.json')">Tomar Quiz</button>
+                        </div>
+                    </div>
                 </div>
-    
-                <!-- Páginas legales -->
-                <div class="col-md-3">
-                    <h5>Páginas Legales</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/legal/privacidad.html" class="text-white">Política de Privacidad</a></li>
-                        <li><a href="/legal/terminos.html" class="text-white">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
-    
-                <!-- Contacto -->
-                <div class="col-md-3">
-                    <h5>Contacto</h5>
-                    <p><i class="fas fa-envelope"></i> contacto@healppypets.com</p>
-                    <p><i class="fas fa-phone"></i> +123 456 7890</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Dirección de la empresa</p>
-                </div>
-            </div>
-            <div class="text-center mt-3">
-                <p class="mb-0">&copy; 2024 HealppyPets. Todos los derechos reservados.</p>
+
+                
             </div>
         </div>
-    </footer>
-    
+            <!-- Modal del quiz -->
+            <div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quizModalLabel">Quiz</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="quiz"></div>
+                            <div id="result" class="result-container">
+                                <h3 id="result-text"></h3>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo y redes sociales -->
+                    <div class="col-md-4">
+                        <img src="../Imagenes/Logo_Veterinaria_healppypets.png" alt="Logo HealppyPets" class="mb-2 logo" style="width: 150px; border-radius: 50%;">
+                        <div>
+                            <a href="https://www.facebook.com/profile.php?id=100093894950283&mibextid=ZbWKwL" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.tiktok.com/@healppy.pets?_t=8oi5rDO8oBp&_r=1" class="text-white me-2"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.instagram.com/healppy_pets?utm_source=qr&igsh=OHhsZjVhczc3cW9n" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Páginas legales -->
+                    <div class="col-md-4">
+                        <h5>Páginas Legales</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="./Politicas/Politicas-de-privacidad.html" class="text-white">Política de Privacidad</a></li>
+                            <li><a href="/Politicas/Descargo_de_responsabilidad.html" class="text-white">Descargo de Responsabilidad</a></li>
+                            <li><a href="/Politicas/Terminos_y_condiciones.html" class="text-white">Terminos y Condiciones</a></li>
+                            <li><a href="/Politicas/Copyright.html" class="text-white">Copyright</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="col-md-4">
+                        <h5>Contacto</h5>
+                        <p><i class="fas fa-envelope"></i> happypetscada@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +593987005084</p>
+                        <p>
+                            <a href="https://www.google.com/maps/place/Healppy+Pets+Veterinary+Spa/@-0.0915484,-78.472321,17z/data=!3m1!4b1!4m6!3m5!1s0x91d58f59fde75e49:0xe14c66c3a13865b7!8m2!3d-0.0915538!4d-78.4697461!16s%2Fg%2F11ldwjhyz9?entry=ttu" target="_blank">
+                              <i class="fas fa-map-marker-alt"></i> Calle Clemente Yerovi Indaburu Oe143 y OE1B
+                            </a>
+                        </p>
+                          
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <p class="mb-0">&copy; 2024 HealppyPets. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="../Quizz/quizz.js"></script>
 </body>
 </html>

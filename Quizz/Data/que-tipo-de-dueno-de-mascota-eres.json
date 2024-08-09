@@ -1,0 +1,72 @@
+{
+    "title": "tipo-de-dueno-de-mascota",
+    "questions": [
+        {
+            "question": "¿Cómo describes tu rutina diaria?",
+            "options": [
+                {"text": "Activa y llena de energía", "value": 1},
+                {"text": "Tranquila y relajada", "value": 2},
+                {"text": "Cargada de compromisos", "value": 3},
+                {"text": "Flexible y espontánea", "value": 4}
+            ]
+        },
+        {
+            "question": "¿Cuánto tiempo puedes dedicarle a tu mascota diariamente?",
+            "options": [
+                {"text": "Más de 3 horas", "value": 1},
+                {"text": "Entre 1 y 3 horas", "value": 2},
+                {"text": "Menos de 1 hora", "value": 3},
+                {"text": "Solo fines de semana", "value": 4}
+            ]
+        },
+        {
+            "question": "¿Qué tan importante es para ti la compañía de una mascota?",
+            "options": [
+                {"text": "Muy importante, busco una conexión profunda", "value": 1},
+                {"text": "Importante, pero no siempre la prioridad", "value": 2},
+                {"text": "Algo agradable, pero no esencial", "value": 3},
+                {"text": "No es una prioridad", "value": 4}
+            ]
+        },
+        {
+            "question": "¿Cómo prefieres socializar con tu mascota?",
+            "options": [
+                {"text": "Hacer actividades y juegos juntos", "value": 1},
+                {"text": "Tener momentos de calma y tranquilidad", "value": 2},
+                {"text": "Solo interactuar cuando sea necesario", "value": 3},
+                {"text": "Dejar que sea independiente y sólo supervisar", "value": 4}
+            ]
+        },
+        {
+            "question": "¿Dónde duerme tu mascota?",
+            "options": [
+                {"text": "En su propia cama", "value": 1},
+                {"text": "En mi cama", "value": 2},
+                {"text": "En un lugar designado fuera de la casa", "value": 3},
+                {"text": "Donde quiera", "value": 4}
+            ]
+        }
+    ],
+    "personalities": [
+        {
+            "type": "El Entusiasta",
+            "range": [4, 7],
+            "description": "Descripción: Valoras la conexión profunda y dedicas mucho tiempo a tu mascota. Te encanta interactuar y hacer actividades juntos."
+        },
+        {
+            "type": "El Balanceado",
+            "range": [8, 11],
+            "description": "Eres una persona equilibrada que busca una buena conexión con su mascota, pero también mantiene un equilibrio con tus otras responsabilidades."
+        },
+        {
+            "type": "Práctico y Moderado",
+            "range": [12, 15],
+            "description": "Prefieres mantener cierta independencia tanto para ti como para tu mascota. Interactúas con tu mascota cuando es necesario, pero no es tu prioridad principal."
+        },
+        {
+            "type": "Independiente y Espontáneo",
+            "range": [16, 20],
+            "description": "Eres flexible y permisivo, permitiendo a tu mascota tener libertad y priorizas tus propias rutinas y preferencias."
+        }
+    ]
+}
