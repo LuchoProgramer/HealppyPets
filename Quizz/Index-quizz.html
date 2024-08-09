@@ -13,6 +13,7 @@
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
+    <link rel="stylesheet" href="../Quizz/quizz.css">
 </head>
 <body>
     <style>
@@ -75,7 +76,7 @@
                 <div class="col-md-6">
                     <div class="card mb-4">
                         <img src="../Imagenes/Quizz_Que_clase_de_dueño_de_mascota_eres.webp" class="card-img-top img-fluid" alt="¿Qué tipo de dueño de mascota eres?" style="max-height: 300px; object-fit: cover;">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
                             <p class="card-text">Averigua qué tipo de dueño de mascota eres y qué tipo de mascota se adaptaría mejor a tu estilo de crianza.</p>
                             <button class="btn btn-primary" onclick="openQuiz('Data/que-tipo-de-dueno-de-mascota-eres.json')">Tomar Quiz</button>
@@ -86,7 +87,7 @@
                 <div class="col-md-6">
                     <div class="card mb-4">
                         <img src="../Imagenes/Quizz_Que_clase_de_dueño_de_mascota_eres.webp" class="card-img-top img-fluid" alt="¿Qué tipo de dueño de mascota eres?" style="max-height: 300px; object-fit: cover;">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h5 class="card-title">¿Qué tipo de dueño de mascota eres?</h5>
                             <p class="card-text">Averigua qué tipo de dueño de mascota eres y qué tipo de mascota se adaptaría mejor a tu estilo de crianza.</p>
                             <button class="btn btn-primary" onclick="openQuiz('Data/cuestionario.json')">Tomar Quiz</button>
@@ -102,7 +103,7 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="quizModalLabel">Quiz</h5>
+                            <h5 class="modal-title" id="quizModalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

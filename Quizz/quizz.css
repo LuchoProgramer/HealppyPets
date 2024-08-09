@@ -7,6 +7,8 @@
     --color-light: #F2F2F0;
 }
 
+
+
 /* Estilo para el encabezado del modal */
 .modal-header {
     background-color: var(--color-primary); /* Usamos el color principal de la marca */
@@ -25,6 +27,7 @@
     background-color: var(--color-light); /* Fondo claro para el cuerpo del modal */
     padding: 30px; /* Espaciado interno */
     font-size: 1.1rem; /* Tamaño de fuente */
+    text-align: center;
 }
 
 /* Estilo para los botones */
@@ -65,18 +68,22 @@
     font-size: 1rem;
 }
 
+/* Asegúrate de que estos estilos se apliquen a los botones dentro del modal */
 .option-btn {
     cursor: pointer;
-    background-color: var(--color-light); /* Fondo claro para cada opción */
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--color-light) !important; /* Fondo claro para cada opción */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    border: 1px solid #F28DB2 !important; /* Borde rosado más intenso y grueso */
+    border-radius: 5px !important; /* Bordes ligeramente redondeados */
 }
 
-.option-btn:hover {
+.modal .option-btn:hover {
     background-color: var(--color-accent); /* Cambio de color al pasar el mouse */
     color: var(--color-dark); /* Texto oscuro en hover */
+    border-color: var(--color-dark); /* Borde oscuro al hacer hover */
 }
 
-.list-group-item {
+.modal .list-group-item {
     border: none; /* Sin bordes para un aspecto más limpio */
     padding: 15px; /* Espaciado interno para hacer los botones más grandes */
     margin-bottom: 10px; /* Espacio entre los elementos de la lista */
