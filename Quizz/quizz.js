@@ -77,6 +77,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('result').style.display = 'block';
     }
 
+    // Aquí es donde se debe añadir el código para capturar el parámetro de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const quizFile = urlParams.get('quiz');
+
+    // Si hay un parámetro 'quiz' en la URL, abre el quiz correspondiente
+    if (quizFile) {
+        openQuiz('Data/' + quizFile);
+    }
+
     window.openQuiz = openQuiz;
 
     document.getElementById('quizModal').addEventListener('hidden.bs.modal', function() {
