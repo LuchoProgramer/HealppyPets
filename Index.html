@@ -303,46 +303,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
-                    <script type="text/javascript">
-                        (function(){
-                           emailjs.init("jgAwVR-flCTKQnK_X");
-                        })();
-                     </script>
-                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                    <script type="text/javascript">
-                        document.getElementById('contact-form').addEventListener('submit', function(event) {
-                           event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-                           event.stopPropagation(); // Prevenir que el evento se propague
-                     
-                           // Validar el formulario
-                           const form = event.target;
-                           if (form.checkValidity() === false) {
-                              form.classList.add('was-validated');
-                              return;
-                           }
-                     
-                           // Verificar reCAPTCHA
-                           const recaptchaResponse = grecaptcha.getResponse();
-                           if (!recaptchaResponse) {
-                              alert('Por favor, verifica el reCAPTCHA.');
-                              return;
-                           }
-                     
-                           // Enviar el formulario usando EmailJS
-                           emailjs.sendForm('service_066w7i9', 'template_q7peraq', form, 'jgAwVR-flCTKQnK_X')
-                              .then(function(response) {
-                                 console.log('SUCCESS!', response.status, response.text);
-                                 alert('¡El mensaje ha sido enviado correctamente!');
-                                 form.reset(); // Reiniciar el formulario
-                                 form.classList.remove('was-validated'); // Remover la clase de validación
-                                 grecaptcha.reset(); // Reiniciar reCAPTCHA
-                              }, function(error) {
-                                 console.error('FAILED...', error);
-                                 alert('Hubo un problema al enviar el mensaje.');
-                              });
-                        });
-                     </script>                     
+                    </div>                
         
                     <!-- Botón de Agendar Cita -->
                     <div class="col-md-6 mt-5" id="agendar-cita">
