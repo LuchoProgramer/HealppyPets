@@ -1,4 +1,54 @@
-<section id="faq" class="faq-section">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes | HealppyPets</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+      <div class="container">
+        <a class="navbar-brand" href="/Index.html">HealppyPets</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Index.html#servicios">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Index.html#nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Index.html#recursos">Recursos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Index.html#contacto-y-agendar">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Blog/Index-Blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Quizz/Index-quizz.html">Entretenimiento</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Index.html#agendar-cita">
+                <i class="fas fa-calendar-check me-2"></i>Agendar Cita
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-5">
+    <section id="faq" class="faq-section">
   <h2>Preguntas Frecuentes</h2>
   <div class="faq-list">
     <div class="faq-item">
@@ -26,7 +76,53 @@
       <div class="faq-answer">Sí, ofrecemos retiro y entrega de mascotas para baño y grooming en Carcelén y zonas cercanas.</div>
     </div>
   </div>
-</section>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Logo y redes sociales -->
+        <div class="col-md-4">
+          <img src="../Imagenes/Logo_Veterinaria_healppypets.png" alt="Logo HealppyPets" class="mb-2 logo" style="width: 150px; border-radius: 50%;" width="150" height="150" loading="lazy">
+          <div>
+            <a href="https://www.facebook.com/profile.php?id=100093894950283&mibextid=ZbWKwL" class="text-white me-2" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@healppy.pets?_t=8oi5rDO8oBp&_r=1" class="text-white me-2" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/healppy_pets?utm_source=qr&igsh=OHhsZjVhczc3cW9n" class="text-white me-2" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <!-- Páginas legales -->
+        <div class="col-md-4">
+          <h5>Páginas Legales</h5>
+          <ul class="list-unstyled">
+            <li class="nav-item"><a class="nav-link text-white" href="faq.html">Preguntas Frecuentes</a></li>
+            <li><a href="./Politicas/Politicas-de-privacidad.html" class="text-white">Política de Privacidad</a></li>
+            <li><a href="/Politicas/Descargo_de_responsabilidad.html" class="text-white">Descargo de Responsabilidad</a></li>
+            <li><a href="/Politicas/Terminos_y_condiciones.html" class="text-white">Terminos y Condiciones</a></li>
+            <li><a href="/Politicas/Copyright.html" class="text-white">Copyright</a></li>
+          </ul>
+        </div>
+        <!-- Contacto -->
+        <div class="col-md-4">
+          <h5>Contacto</h5>
+          <p><i class="fas fa-envelope"></i> happypetscada@gmail.com</p>
+          <p><i class="fas fa-phone"></i> +593987005084</p>
+          <p>
+            <a href="https://www.google.com/maps/place/Healppy+Pets+Veterinary+Spa/@-0.0915484,-78.472321,17z/data=!3m1!4b1!4m6!3m5!1s0x91d58f59fde75e49:0xe14c66c3a13865b7!8m2!3d-0.0915538!4d-78.4697461!16s%2Fg%2F11ldwjhyz9?entry=ttu" target="_blank">
+              <i class="fas fa-map-marker-alt"></i> Calle Clemente Yerovi Indaburu Oe143 y OE1B
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <p class="mb-0">&copy; 2024 HealppyPets. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
 <script>
 // FAQ toggle
 const faqButtons = document.querySelectorAll('.faq-question');
