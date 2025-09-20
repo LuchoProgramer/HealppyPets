@@ -1,0 +1,47 @@
+<section id="faq" class="faq-section">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">¿Dónde está ubicada HealppyPets?</button>
+      <div class="faq-answer">Estamos en Carcelén, Quito, Ecuador. Consulta nuestro <a href="https://www.google.com/maps/place/Carcelén,+Quito,+Ecuador/" target="_blank">mapa aquí</a>.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">¿Qué servicios ofrecen?</button>
+      <div class="faq-answer">Ofrecemos grooming, consultas veterinarias, vacunación, desparasitación, ropa y accesorios para mascotas, y servicio de retiro y entrega de mascotas para baño.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">¿Cuáles son los horarios de atención?</button>
+      <div class="faq-answer">Atendemos de lunes a sábado de 09:00 a 18:00.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">¿Cómo puedo agendar una cita?</button>
+      <div class="faq-answer">Puedes agendar una cita llamando al <a href="tel:+593987005084">+593 987 005 084</a> o escribiéndonos por <a href="https://wa.me/593987005084" target="_blank">WhatsApp</a>.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">¿Atienden emergencias?</button>
+      <div class="faq-answer">Sí, atendemos emergencias veterinarias dentro de nuestro horario de atención.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">¿Tienen servicio a domicilio?</button>
+      <div class="faq-answer">Sí, ofrecemos retiro y entrega de mascotas para baño y grooming en Carcelén y zonas cercanas.</div>
+    </div>
+  </div>
+</section>
+<script>
+// FAQ toggle
+const faqButtons = document.querySelectorAll('.faq-question');
+faqButtons.forEach(btn => {
+  btn.addEventListener('click', function() {
+    const answer = this.nextElementSibling;
+    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+  });
+});
+</script>
+<style>
+.faq-section { max-width: 700px; margin: 0 auto; padding: 2rem 1rem; }
+.faq-list { margin-top: 1rem; }
+.faq-item { margin-bottom: 1rem; }
+.faq-question { width: 100%; text-align: left; background: #F2CED8; border: none; padding: 1rem; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: background 0.2s; }
+.faq-question:hover { background: #F2C4D5; }
+.faq-answer { display: none; padding: 1rem; background: #fff; border-radius: 5px; border: 1px solid #eee; margin-top: 0.5rem; }
+</style>

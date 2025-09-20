@@ -350,6 +350,7 @@
                     <div class="col-md-4">
                         <h5>Páginas Legales</h5>
                         <ul class="list-unstyled">
+                            <li class="nav-item"><a class="nav-link text-white" href="faq.html">Preguntas Frecuentes</a></li>
                             <li><a href="./Politicas/Politicas-de-privacidad.html" class="text-white">Política de Privacidad</a></li>
                             <li><a href="/Politicas/Descargo_de_responsabilidad.html" class="text-white">Descargo de Responsabilidad</a></li>
                             <li><a href="/Politicas/Terminos_y_condiciones.html" class="text-white">Terminos y Condiciones</a></li>
@@ -386,5 +387,14 @@
     <script src="https://www.google.com/recaptcha/api.js" defer></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js" defer></script>
+    <script>
+    fetch('schema.html')
+        .then(response => response.text())
+        .then(schema => {
+            const div = document.createElement('div');
+            div.innerHTML = schema;
+            document.head.appendChild(div.firstElementChild);
+        });
+    </script>
 </body>
 </html>
